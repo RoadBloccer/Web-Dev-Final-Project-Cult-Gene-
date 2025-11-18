@@ -6,21 +6,18 @@
     <title>Generate a Cult</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<div>
 
-    <body>
-        <h1>Summon Your Cult</h1>
+<body>
+    <h1>Summon Your Cult</h1>
+
+    <body onload="generateCult()">
         <button onclick="generateCult()">Generate Cult</button>
-
         <!-- Flex container for images + text -->
-        <div id="cultContainer">
-
+        <div id="cultContainer" class="box">
             <div id="leftImage"></div>
             <div id="result"></div>
             <div id="rightImage"></div>
-
         </div>
-
         <script>
             const cultNames = [
                 "The Crimson Veil",
@@ -29,7 +26,6 @@
                 "Order of the Black Lantern",
                 "The Pale Flame"
             ];
-
             const cultGoals = [
                 "to resurrect an ancient deity",
                 "to spread eternal darkness",
@@ -37,7 +33,6 @@
                 "to guard secrets of the underworld",
                 "to corrupt kingdoms with madness"
             ];
-
             const cultSymbols = [
                 "a bleeding eye",
                 "a serpent coiled around a skull",
@@ -45,7 +40,6 @@
                 "a shattered crown",
                 "a spiral of thorns"
             ];
-
             const cultImages = [
                 "images/Zealots_0.png",
                 "images/Zealots_1.png",
@@ -91,30 +85,25 @@
                 "Images/Zealots_41.png",
                 "Images/Zealots_42.png",
             ];
-
             function generateCult() {
                 const name = cultNames[Math.floor(Math.random() * cultNames.length)];
                 const goal = cultGoals[Math.floor(Math.random() * cultGoals.length)];
                 const symbol = cultSymbols[Math.floor(Math.random() * cultSymbols.length)];
-
                 // Pick two different random images
                 let leftImg = cultImages[Math.floor(Math.random() * cultImages.length)];
                 let rightImg = cultImages[Math.floor(Math.random() * cultImages.length)];
                 while (rightImg === leftImg) {
                     rightImg = cultImages[Math.floor(Math.random() * cultImages.length)];
                 }
-
                 document.getElementById("result").innerHTML =
                     `<strong>${name}</strong><br>Goal: ${goal}<br>Symbol: ${symbol}`;
-
                 document.getElementById("leftImage").innerHTML =
                     `<img src="${leftImg}" alt="Cult symbol image">`;
-
                 document.getElementById("rightImage").innerHTML =
                     `<img src="${rightImg}" alt="Cult symbol image">`;
             }
         </script>
     </body>
-</div>
+
 
 </html>

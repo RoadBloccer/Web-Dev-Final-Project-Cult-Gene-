@@ -39,13 +39,55 @@ button:hover {
 img {
     margin-top: 20px;
     max-width: 300px;
-    border: 3px solid crimson;
 }
 
-div {
+mainPage {
     margin: auto;
     width: 600px;
     padding: 20px;
     margin-top: 100px;
     border: 2px solid crimson;
+}
+
+cultContainerOld {
+    margin: auto;
+    width: 600px;
+    padding: 20px;
+    margin-top: 100px;
+    border: 2px solid crimson;
+
+    display: flex;
+    /* line up children horizontally */
+    justify-content: center;
+    /* center them across the page */
+    align-items: center;
+    /* align vertically in the middle */
+    margin-top: 30px;
+}
+
+.box>* {
+    border: 2px solid #dc143c;
+    border-radius: 5px;
+    background: darkred;
+}
+
+.box {
+    border: 2px solid crimson;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#result {
+    margin: 0 20px;
+    /* space between text and images */
+    font-size: 1.2em;
+    max-width: 300px;
+    /* keep text box narrow */
+}
+
+#leftImage img,
+#rightImage img {
+    max-width: 200px;
+    height: auto;
 }
