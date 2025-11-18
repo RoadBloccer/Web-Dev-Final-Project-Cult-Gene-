@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Generate a Cult</title>
+    <style>
+        body {
+            background: #111;
+            color: #eee;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background: crimson;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: darkred;
+        }
+
+        #result {
+            margin-top: 30px;
+            font-size: 1.2em;
+        }
+
+        img {
+            margin-top: 20px;
+            max-width: 300px;
+            border: 3px solid crimson;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Summon Your Cult</h1>
+    <button onclick="generateCult()">Generate Cult</button>
+    <div id="result"></div>
+    <div id="imageContainer"></div>
+
+    <script>
+        const cultNames = [
+            "The Crimson Veil",
+            "Children of the Eclipse",
+            "The Whispering Bones",
+            "Order of the Black Lantern",
+            "The Pale Flame"
+        ];
+
+        const cultGoals = [
+            "to resurrect an ancient deity",
+            "to spread eternal darkness",
+            "to harvest souls for forbidden rituals",
+            "to guard secrets of the underworld",
+            "to corrupt kingdoms with madness"
+        ];
+
+        const cultSymbols = [
+            "a bleeding eye",
+            "a serpent coiled around a skull",
+            "a burning hand",
+            "a shattered crown",
+            "a spiral of thorns"
+        ];
+
+        // Images stored in /images folder
+        const cultImages = [
+            "images/cult1.jpg",
+            "images/cult2.jpg",
+            "images/cult3.jpg",
+            "images/cult4.jpg",
+            "images/cult5.jpg"
+        ];
+
+        function generateCult() {
+            const name = cultNames[Math.floor(Math.random() * cultNames.length)];
+            const goal = cultGoals[Math.floor(Math.random() * cultGoals.length)];
+            const symbol = cultSymbols[Math.floor(Math.random() * cultSymbols.length)];
+            const image = cultImages[Math.floor(Math.random() * cultImages.length)];
+
+            document.getElementById("result").innerHTML =
+                `<strong>${name}</strong><br>Goal: ${goal}<br>Symbol: ${symbol}`;
+
+            document.getElementById("imageContainer").innerHTML =
+                `<img src="${image}" alt="Cult symbol image">`;
+        }
+    </script>
+</body>
+
+</html>
