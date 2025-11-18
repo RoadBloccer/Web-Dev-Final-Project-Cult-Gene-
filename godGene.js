@@ -219,7 +219,10 @@ const godImages = [
     "Images/gods/Zealots_16.png",
     "Images/gods/Zealots_17.png",
     "Images/gods/Zealots_31.png",
-    "Images/gods/Zealots_34.png"
+    "Images/gods/Zealots_34.png",
+    "Images/gods/NPCS__37.png",
+    "Images/gods/NPCS__49.png",
+    "Images/gods/NPCS__52.png"
 ];
 
 
