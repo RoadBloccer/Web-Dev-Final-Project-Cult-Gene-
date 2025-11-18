@@ -20,7 +20,14 @@ const cultSymbols = [
     "a spiral of thorns"
 ];
 // list of cult things, Name, Goal, Symbol, Rituals, Lair, Deity, Deity Domain/powers
-const cultImages = [
+const cultImages = [ //Solved, thanks Emma=> NPC files not loading, possibly need to fix paths, idk why they're broke
+    "Images/NPCS__11.png",
+    "Images/NPCS__12.png",
+    "Images/NPCS__13.png",
+    "Images/NPCS__24.png",
+    "Images/NPCS__29.png",
+    "Images/NPCS__30.png",
+    "Images/NPCS__47.png",
     "images/Zealots_0.png",
     "images/Zealots_2.png",
     "images/Zealots_4.png",
@@ -57,14 +64,7 @@ const cultImages = [
     "Images/Zealots_39.png",
     "Images/Zealots_40.png",
     "Images/Zealots_41.png",
-    "Images/Zealots_42.png",
-    "Images/NPCS_11.png",
-    "Images/NPCS_12.png",
-    "Images/NPCS_13.png",
-    "Images/NPCS_24.png",
-    "Images/NPCS_29.png",
-    "Images/NPCS_30.png",
-    "Images/NPCS_47.png",
+    "Images/Zealots_42.png"
 
 ];
 function generateCult() {
@@ -80,7 +80,7 @@ function generateCult() {
     document.getElementById("result").innerHTML =
         `<strong>${name}</strong><br>Goal: ${goal}<br>Symbol: ${symbol}`;
     document.getElementById("leftImage").innerHTML =
-        `<img src="${leftImg}" alt="Cult symbol image">`;
+        `<img src="${leftImg}" alt="Picture of Cultist Jeff">`;
     document.getElementById("rightImage").innerHTML =
-        `<img src="${rightImg}" alt="Cult symbol image">`;
+        `<img src="${rightImg}" alt="Picture of Cultist Bob">`;
 }

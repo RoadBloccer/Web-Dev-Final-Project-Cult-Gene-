@@ -7,7 +7,21 @@ body {
 
 h1 {
     margin-top: 40px;
+    background: crimson;
 }
+
+.pageHeader {
+    background-color: crimson;
+    /* solid color */
+    color: white;
+    /* text color */
+    padding: 20px 0;
+    /* top/bottom spacing */
+    text-align: center;
+    /* center the title */
+    text-shadow: 0 0 10px black;
+}
+
 
 p {
     margin-top: 20px;
@@ -33,14 +47,9 @@ button:hover {
     background: darkred;
 }
 
-#result {
-    margin-top: 30px;
-    font-size: 1.2em;
-}
-
 img {
     margin-top: 20px;
-    max-width: 300px;
+    max-width: 350px;
 }
 
 mainPage {
@@ -69,10 +78,27 @@ mainPage {
     font-size: 1.2em;
     max-width: 300px;
     /* keep text box narrow */
+    margin-top: 30px;
+    font-size: 1.2em;
 }
 
 #leftImage img,
 #rightImage img {
-    max-width: 200px;
-    height: auto;
+    max-width: auto;
+    height: 350px;
+}
+
+#god_result {
+    margin: 0 20px;
+    /* space between text and images */
+    font-size: 1.2em;
+    max-width: 300px;
+    /* keep text box narrow */
+    margin-top: 30px;
+    font-size: 1.2em;
+}
+
+#god_Image img {
+    max-width: auto;
+    height: 350px;
 }
