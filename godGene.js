@@ -101,6 +101,7 @@ const godTitles = [
     "The Unseen",
     "The Corruptor",
     "Twisted Nightmare",
+    "Master of None",
     "Harbringer",
     "God of the Sands",
     "The Veinbinder",
@@ -201,16 +202,21 @@ const godTraits = [
 const godImages = [
     "Images/gods/NPCS__15.png",
     "Images/gods/NPCS__16.png",
+    "Images/gods/NPCS__24.png",
     "Images/gods/NPCS__28.png",
+    "Images/gods/NPCS__30.png",
     "Images/gods/NPCS__31.png",
     "Images/gods/NPCS__38.png",
     "Images/gods/NPCS__40.png",
     "Images/gods/NPCS__41.png",
+    "Images/gods/NPCS__47.png",
     "Images/gods/NPCS__48.png",
     "Images/gods/NPCS__53.png",
     "Images/gods/Zealots_1.png",
     "Images/gods/Zealots_3.png",
     "Images/gods/Zealots_5.png",
+    "Images/gods/Zealots_11.png",
+    "Images/gods/Zealots_16.png",
     "Images/gods/Zealots_17.png",
     "Images/gods/Zealots_31.png",
     "Images/gods/Zealots_34.png"
@@ -225,7 +231,7 @@ function generateGod() {
     let godImg = godImages[Math.floor(Math.random() * godImages.length)];
 
     document.getElementById("god_result").innerHTML =
-        `<strong>${gname} ${title}</strong><br>Domain: ${domains}<br>Trait: ${traits}`;
+        `<strong>${gname} ${title}</strong><br>Domain: ${domain}<br>Trait: ${traits}`;
     document.getElementById("god_Image").innerHTML =
         `<img src="${godImg}" alt="Picture of a God">`;
 }

@@ -7,22 +7,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body onload="generateGod()">
     <header class="pageHeader">
         <h1>Awaken your god</h1>
     </header>
 
-    <body onload="generateGod()">
-        <button onclick="generateGod()">Generate Deity</button>
-        <!-- Flex container for images + text -->
-        <div id="god_Container" class="box">
-            <div id="god_result"></div>
-            <div id="god_Image"></div>
-        </div>
-        <script src="godGene.js"></script>
-    </body>
+    <button onclick="generateGod()">Generate Deity</button>
+    <!-- Flex container for images + text -->
+    <div id="god_Container" class="box">
+        <div id="god_result"></div>
+        <div id="god_Image"></div>
+    </div>
+
     <br>
     <a href="index.html" class="button">Return to Main Page</a>
+
+    <script src="godGene.js"></script>
 </body>
 
 
