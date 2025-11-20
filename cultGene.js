@@ -1,3 +1,5 @@
+"use strict";
+
 const cultNames = [
     "The Crimson Veil",
     "Children of the Eclipse",

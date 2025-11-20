@@ -1,3 +1,5 @@
+"use strict";
+
 const godNames = [
     "Buk",
     "Azazyl",
@@ -51,12 +53,22 @@ const godNames = [
     "Vexorul",
     "Kharzoth",
     "Lorthul",
-    "Jeff"
+    "Jeff",
+    "Gorkath",
+    "Morkath",
+    "Zulthu",
+    "Xerxes",
+    "Muuk Buuk",
+    "Throng",
+    "Gororath"
 ];
 
 const godTitles = [
     "Devourer",
+    "Form Shifter",
+    "Debt Collector",
     "Eternal Watch",
+    "Gambler",
     "The Bringer",
     "The Abyssal",
     "The One",
@@ -73,6 +85,7 @@ const godTitles = [
     "The Rot",
     "The Unknowing",
     "Idiot God",
+    "Defiler",
     "The Blind",
     "Broken",
     "Laughing God",
@@ -110,13 +123,35 @@ const godTitles = [
     "Goat Father",
     "The Unholy",
     "All-Consuming",
-    "Polka Fiend"
+    "Polka Fiend",
+    "The Troll",
+    "Mountain King",
+    "Consuming One",
+    "The Gate Keeper",
+    "The Towering",
+    "The Uncaring",
+    "Dreaming God",
+    "Lord of Gnashing Teeth",
+    "Clay Idol",
+    "The Maw",
+    "The Idol",
+    "Idle God",
+    "Cow God",
+    "The Great Eye",
+    "Golden Calf",
+    "Bull Lord",
+    "Goat Lord",
+    "The Horned"
 ];
 
 const godDomains = [
     "Death",
     "Decay",
     "Insanity",
+    "Gambling",
+    "Violence",
+    "Debtors",
+    "Fungi",
     "Shadows",
     "Chaos",
     "Trickery",
@@ -168,6 +203,69 @@ const godDomains = [
 ];
 
 const godTraits = [
+    "Melting Flesh",
+    "Whispering Voice",
+    "Multiple Eyes",
+    "Tentacles",
+    "Skeleton",
+    "Shadow Skin",
+    "Blood Dripping",
+    "Fungal Growths",
+    "Insect Swarm Cloud",
+    "Cloaked in Shadows",
+    "Glowing Runes",
+    "Rotting Odor",
+    "Bone Protrusions",
+    "Smoke Breath",
+    "Icy Breath",
+    "Quick to Anger",
+    "Liar",
+    "Contractual",
+    "Blood Thristy",
+    "Grandiose Wings",
+    "Canabalistic",
+    "Profaine",
+    "Gift Giving",
+    "ALways Wears Red",
+    "Always Eats Before Sunrise",
+    "Never Sleeps",
+    "Never Steps Foot in Sunlight",
+    "Never Steps Foot on Holy Ground",
+    "Collects Souls in the Form of Pennys",
+    "Gambles for Worshippers' Lives",
+    "Speaks in Tongues",
+    "Only Refers to Others as 'Jeff'",
+    "Has a Laugh that Can Shatter Glass",
+    "Has Eyes Everywhere",
+];
+
+const godImages = [
+    "Images/gods/NPCS__15.png",
+    "Images/gods/NPCS__16.png",
+    "Images/gods/NPCS__24.png",
+    "Images/gods/NPCS__28.png",
+    "Images/gods/NPCS__30.png",
+    "Images/gods/NPCS__31.png",
+    "Images/gods/NPCS__38.png",
+    "Images/gods/NPCS__40.png",
+    "Images/gods/NPCS__41.png",
+    "Images/gods/NPCS__47.png",
+    "Images/gods/NPCS__48.png",
+    "Images/gods/NPCS__53.png",
+    "Images/gods/Zealots_1.png",
+    "Images/gods/Zealots_3.png",
+    "Images/gods/Zealots_5.png",
+    "Images/gods/Zealots_11.png",
+    "Images/gods/Zealots_16.png",
+    "Images/gods/Zealots_17.png",
+    "Images/gods/Zealots_31.png",
+    "Images/gods/Zealots_34.png",
+    "Images/gods/NPCS__37.png",
+    "Images/gods/NPCS__49.png",
+    "Images/gods/NPCS__52.png"
+];
+
+const godCommands = [
     "Followers must offer a sacrifice of blood weekly",
     "Temples are built underground or in dark places",
     "Worshippers wear masks to honor the god's nature",
@@ -197,32 +295,56 @@ const godTraits = [
     "Followers must wear goat skulls",
     "Worshippers must wear cloaks of bells",
     "Followers must all be clean shaven",
+    "Followers must mate with pigs",
+    "Followers must slit their wrists",
+    "Followers must drink hallucinogens",
+    "Worshippers must be naked during rituals",
+    "Worshippers must cover themselves in ash",
+    "Worshippers must carve their eyes out",
+    "Followers must be baptised in urine",
+    "Worshippers must wear spiked collars",
+    "Followers must not eat of anything but human meat",
+    "Followers must not sleep for more than two hours at a time",
+    "Followers must not pass through doorways",
+    "Followers must not speak the name of this god",
+    "Worshippers must not partake in transportation",
+    "Worshippers must not eat the flesh of cows",
+    "Worshippers must not eat the flesh of goats",
+    "Worshippers must not eat the flesh of pigs",
+    "Followers must eat the flesh of Jeffs",
+    "Follwers must urinate on holy ground",
+    "Followers must only eat the flesh of pigs",
+    "Worshippers must only eat the flesh of goats",
+    "Followers must only eat the flesh of cows"
 ];
 
-const godImages = [
-    "Images/gods/NPCS__15.png",
-    "Images/gods/NPCS__16.png",
-    "Images/gods/NPCS__24.png",
-    "Images/gods/NPCS__28.png",
-    "Images/gods/NPCS__30.png",
-    "Images/gods/NPCS__31.png",
-    "Images/gods/NPCS__38.png",
-    "Images/gods/NPCS__40.png",
-    "Images/gods/NPCS__41.png",
-    "Images/gods/NPCS__47.png",
-    "Images/gods/NPCS__48.png",
-    "Images/gods/NPCS__53.png",
-    "Images/gods/Zealots_1.png",
-    "Images/gods/Zealots_3.png",
-    "Images/gods/Zealots_5.png",
-    "Images/gods/Zealots_11.png",
-    "Images/gods/Zealots_16.png",
-    "Images/gods/Zealots_17.png",
-    "Images/gods/Zealots_31.png",
-    "Images/gods/Zealots_34.png",
-    "Images/gods/NPCS__37.png",
-    "Images/gods/NPCS__49.png",
-    "Images/gods/NPCS__52.png"
+const godPowers = [
+    "Gaze of Stone",
+    "Acid Touch",
+    "Cult Hive Mind",
+    "Necromancy",
+    "Pyromancy",
+    "Golemancy",
+    "Soul Reaping",
+    "Bone Shaping",
+    "Eternal Call",
+    "Plague Spreading",
+    "Mystical Disease",
+    "Parasitic Control",
+    "Mutations",
+    "Strom Calling",
+    "Shapeshifting",
+    "Invunerable to Mortal Weapons",
+    "Immortality",
+    "Soul Consumption",
+    "Insanity",
+    "Divine Gifts",
+    "Jeff Control",
+    "Psychic Manipulation",
+    "Otherworldly Screams",
+    "Beast Summoning",
+    "Blood Bending",
+    "Flesh Puppeteering",
 ];
 
 
@@ -231,10 +353,12 @@ function generateGod() {
     const title = godTitles[Math.floor(Math.random() * godTitles.length)];
     const domain = godDomains[Math.floor(Math.random() * godDomains.length)];
     const traits = godTraits[Math.floor(Math.random() * godTraits.length)];
+    const commands = godCommands[Math.floor(Math.random() * godCommands.length)];
+    const powers = godPowers[Math.floor(Math.random() * godPowers.length)];
     let godImg = godImages[Math.floor(Math.random() * godImages.length)];
 
     document.getElementById("god_result").innerHTML =
-        `<strong>${gname} ${title}</strong><br>Domain: ${domain}<br>Trait: ${traits}`;
+        `<strong>${gname} ${title}</strong><br>Domain: ${domain}<br>Trait: ${traits}<br>Power: ${powers}<br>Commandment: ${commands}`;
     document.getElementById("god_Image").innerHTML =
         `<img src="${godImg}" alt="Picture of a God">`;
 }
