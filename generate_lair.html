@@ -1,17 +1,29 @@
-const cultLairImages = [ //Solved, thanks Emma=> NPC files not loading, possibly need to fix paths, idk why they're
-broke
-"Images/NPCS__11.png",
+<!DOCTYPE html>
+<html lang="en">
 
-];
-function generateCult() {
-const name = cultNames[Math.floor(Math.random() * cultNames.length)];
+<head>
+    <meta charset="UTF-8">
+    <title>God Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="generateLair()">
+    <header class="pageHeader">
+        <h1>Devle into the Dark</h1>
+    </header>
+
+    <button onclick="generateLair()">Generate Lair</button>
+    <!-- Flex container for images + text -->
+    <div id="lair_Container" class="box">
+        <div id="lair_result"></div>
+        <div id="lair_Image"></div>
+    </div>
+
+    <br>
+    <a href="index.html" class="button">Return to Main Page</a>
+
+    <script src="lairGene.js"></script>
+</body>
 
 
-let leftImg = cultImages[Math.floor(Math.random() * cultImages.length)];
-
-
-document.getElementById("result").innerHTML =
-`<strong>${name}</strong><br>Goal: ${goal}<br>Symbol: ${symbol}`;
-document.getElementById("leftImage").innerHTML =
-`<img src="${leftImg}" alt="Picture of Cultist Lair">`;
-}
+</html>
