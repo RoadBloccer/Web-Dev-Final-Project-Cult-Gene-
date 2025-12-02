@@ -1,0 +1,17 @@
+const cultLairImages = [ //Solved, thanks Emma=> NPC files not loading, possibly need to fix paths, idk why they're
+broke
+"Images/NPCS__11.png",
+
+];
+function generateCult() {
+const name = cultNames[Math.floor(Math.random() * cultNames.length)];
+
+
+let leftImg = cultImages[Math.floor(Math.random() * cultImages.length)];
+
+
+document.getElementById("result").innerHTML =
+`<strong>${name}</strong><br>Goal: ${goal}<br>Symbol: ${symbol}`;
+document.getElementById("leftImage").innerHTML =
+`<img src="${leftImg}" alt="Picture of Cultist Lair">`;
+}
