@@ -104,17 +104,65 @@ mainPage {
     height: 350px;
 }
 
-#lair_result {
-    margin: 0 20px;
-    /* space between text and images */
-    font-size: 1.2em;
-    max-width: 300px;
-    /* keep text box narrow */
-    margin-top: 30px;
-    font-size: 1.2em;
+#dungeon {
+    border-collapse: collapse;
+    margin: 20px auto;
 }
 
-#lair_Image img {
-    max-width: 350px;
-    height: 350px;
+#dungeon td {
+    width: 30px;
+    /* bigger cells */
+    height: 30px;
+    /* bigger cells */
+    text-align: center;
+    border: 0.5px solid #999;
+    /* thinner border */
+}
+
+.corridor {
+    background-color: #d1c0c0;
+}
+
+.wall {
+    background-color: #1d1c1c;
+}
+
+.start {
+    background-color: #dc143c;
+    font-weight: bold;
+}
+
+.treasure {
+    background-color: rgb(179, 179, 3);
+    font-weight: bold;
+}
+
+
+.error {
+    border: 2px solid red;
+}
+
+#formErrors {
+    margin-top: 10px;
+    color: red;
+}
+
+.hide {
+    display: none;
+}
+
+form {
+    max-width: 400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 8px;
 }

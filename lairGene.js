@@ -1,78 +1,97 @@
 "use strict";
 
-const cultLairImages = [
-    "Images/Lairs/abyssal crown_BW.png",
-    "Images/Lairs/Demon Urn_BW.png",
-    "Images/Lairs/Dragons Crest_BW.png",
-    "Images/Lairs/Eclipse Orb_BW.png",
-    "Images/Lairs/Lunar Scars_BW.png",
-    "Images/Lairs/Moonlight Scythe_BW.png",
-    "Images/Lairs/Nightroot Fruit_ BW.png",
-    "Images/Lairs/Portal Key_BW.png",
-    "Images/Lairs/Shadow Fang Blade_BW.png",
-    "Images/Lairs/Solar Elixir_BW.png",
-    "Images/Lairs/Starry Cloak BW.png",
-    "Images/Lairs/Stormclay Ocarina_BW.png"
-];
-const lairNames = [
-    "The Abyssal Crown",
-    "The Demon Urn",
-    "The Dragon's Crest",
-    "The Eclipse Orb",
-    "The Lunar Scars",
-    "The Moonlight Scythe",
-    "The Night Fruit",
-    "The Portal Key",
-    "The Shadowfang Blade",
-];
-const lairTypes = [
-    "Underground Cave",
-    "Abandoned Temple",
-    "Haunted Forest",
-    "Desolate Island",
-    "Ancient Ruins",
-    "Hidden Mountain",
-    "Sunken City",
-    "Forgotten Crypt",
-];
-const lairTraits = [
-    "Cursed Ground",
-    "Eternal Darkness",
-    "Whispering Winds",
-    "Shifting Walls",
-    "Living Shadows",
-    "Toxic Air",
-    "Endless Labyrinth",
-    "Haunting Melodies",
-    "Phantom Flames",
-    "Time Distortion"
-];
-const lairLocations = [
-    "Deep Underground",
-    "Remote Jungle",
-    "Frozen Tundra",
-    "Desert Wasteland",
-    "Swampy Marshlands",
-    "Volcanic Region",
-    "Dense Urban Area",
-    "Isolated Mountain Peak"
-];
-function generateLair() {
-    console.log("generateLair() called!");
-}
+function generateLair(rows, cols) {
+    const table = document.getElementById("dungeon");
+    table.innerHTML = "";
 
-function generateLair() {
-    const name = lairNames[Math.floor(Math.random() * lairNames.length)];
-    const type = lairTypes[Math.floor(Math.random() * lairTypes.length)];
-    const trait = lairTraits[Math.floor(Math.random() * lairTraits.length)];
-    const location = lairLocations[Math.floor(Math.random() * lairLocations.length)];
+    // Safety: need enough space for a bordered maze with odd dimensions for nice paths
+    if (rows < 5 || cols < 5) {
+        console.warn("Use rows/cols >= 5");
+        return;
+    }
 
+    // Initialize grid with walls
+    const grid = Array.from({ length: rows }, () => Array(cols).fill("wall"));
 
-    let lairImg = cultLairImages[Math.floor(Math.random() * cultLairImages.length)];
+    const directions = [
+        [0, -1],  // N
+        [0, 1],  // S
+        [1, 0],  // E
+        [-1, 0]   // W
+    ];
 
+    function shuffle(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
 
-    document.getElementById("lair_result").innerHTML =
-        `<strong>${name}</strong><br>Type: ${type}<br>Trait: ${trait}<br>Location: ${location}`;
-    document.getElementById("lair_Image").innerHTML =
-        `<img src="${lairImg}" alt="Picture of Cultist Lair">`;
+    // Recursive backtracking carve within inner bounds [1 .. rows-2] and [1 .. cols-2]
+    function carve(x, y) {
+        grid[y][x] = "corridor";
+        const dirs = shuffle(directions.slice());
+
+        for (const [dx, dy] of dirs) {
+            const nx = x + dx * 2;     // target cell two steps away
+            const ny = y + dy * 2;
+            const mx = x + dx;         // middle cell between current and target
+            const my = y + dy;
+
+            // Keep carving strictly inside inner area to preserve 1-cell border
+            const inInner =
+                nx >= 1 && nx <= cols - 2 &&
+                ny >= 1 && ny <= rows - 2;
+
+            if (inInner && grid[ny][nx] === "wall") {
+                grid[my][mx] = "corridor"; // open the wall between
+                grid[ny][nx] = "corridor"; // carve the target
+                carve(nx, ny);
+            }
+        }
+    }
+
+    // Start just inside the border
+    const startX = 1;
+    const startY = 1;
+    carve(startX, startY);
+    grid[startY][startX] = "start";
+
+    // Ensure the outer border remains walls (1-cell border)
+    for (let r = 0; r < rows; r++) {
+        grid[r][0] = "wall";
+        grid[r][cols - 1] = "wall";
+    }
+    for (let c = 0; c < cols; c++) {
+        grid[0][c] = "wall";
+        grid[rows - 1][c] = "wall";
+    }
+
+    // Place end in the opposite corner (bottom-right inside the border)
+    const endY = rows - 2;
+    const endX = cols - 2;
+    grid[endY][endX] = "treasure";
+
+    // Ensure there's a corridor leading to end (if not already)
+    if (grid[endY - 1][endX] === "wall") {
+        grid[endY - 1][endX] = "corridor";
+    }
+    if (grid[endY][endX - 1] === "wall") {
+        grid[endY][endX - 1] = "corridor";
+    }
+
+    // Render grid
+    for (let r = 0; r < rows; r++) {
+        const row = document.createElement("tr");
+        for (let c = 0; c < cols; c++) {
+            const cell = document.createElement("td");
+            cell.className = grid[r][c];
+            if (grid[r][c] === "start") cell.textContent = "S";
+            else if (grid[r][c] === "treasure") cell.textContent = "E";
+            else if (grid[r][c] === "corridor") cell.textContent = ".";
+            row.appendChild(cell);
+        }
+        table.appendChild(row);
+    }
 }

@@ -6,14 +6,90 @@
     <title>Contact Me</title>
     <!--Add user ability to input their own name/goal/etc? basically add user input/validation-->
     <link rel="stylesheet" href="style.css"><!--Also add each result as an individual button, to reroll-->
+    <link rel="icon" type="image/png" href="Images/Website_Icon.png">
 </head>
 
 <body>
     <header class="pageHeader">
         <h1>Contact Me</h1>
     </header>
+    <p>If you have any questions, feedback, or just want to say hello, feel free to reach out using the form below!</p>
+    <form id="contactForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send</button>
+
+        <div id="formErrors" class="hide">
+            <ul></ul>
+        </div>
+    </form>
+    <br>
     <a href="index.html" class="button">Return to Main Page</a>
 </body>
 
+<script>
+    document.getElementById("contactForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // prevent form submission
+
+        const name = document.getElementById("name");
+        const email = document.getElementById("email");
+        const subject = document.getElementById("subject");
+        const message = document.getElementById("message");
+
+        const errors = [];
+        const formErrorsDiv = document.getElementById("formErrors");
+        const errorList = formErrorsDiv.querySelector("ul");
+        errorList.innerHTML = ""; // clear previous errors
+
+        // Reset error styles
+        [name, email, subject, message].forEach(input => input.classList.remove("error"));
+
+        // Name validation
+        if (name.value.trim().length < 1) {
+            errors.push("Name is required.");
+            name.classList.add("error");
+        }
+
+        // Email validation
+        const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+        if (!emailRegex.test(email.value)) {
+            errors.push("Valid email is required.");
+            email.classList.add("error");
+        }
+
+        // Subject validation
+        if (subject.value.trim().length < 1) {
+            errors.push("Subject is required.");
+            subject.classList.add("error");
+        }
+
+        // Message validation
+        if (message.value.trim().length < 10) {
+            errors.push("Message must be at least 10 characters long.");
+            message.classList.add("error");
+        }
+
+        // Display errors or submit
+        if (errors.length > 0) {
+            formErrorsDiv.classList.remove("hide");
+            errors.forEach(msg => {
+                const li = document.createElement("li");
+                li.textContent = msg;
+                errorList.appendChild(li);
+            });
+        } else {
+            formErrorsDiv.classList.add("hide");
+            alert("Form submitted successfully!");
+            // Here you could send data via AJAX or allow form submission
+        }
+    });
+</script>
 
 </html>

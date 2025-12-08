@@ -5,25 +5,34 @@
     <meta charset="UTF-8">
     <title>Lair Generator</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="Images/Website_Icon.png">
 </head>
 
-<body onload="generateLair()">
+<body onload="generateLair(9,19); showLairDescription();">
     <header class="pageHeader">
-        <h1>Devle into the Dark</h1>
+        <h1>Delve into the Dark</h1>
     </header>
 
-    <button onclick="generateLair()">Generate Lair</button>
-    <!-- Flex container for images + text -->
-    <div id="lair_Container" class="box">
-        <div id="lair_result"></div>
-        <div id="lair_Image"></div>
+    <button onclick="generateLair(9,19); showLairDescription();">Generate Lair</button>
+    <p>S = Start E = End</p>
+
+    <div class="lair-container">
+        <div class="dungeon-area">
+            <table id="dungeon">
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div id="cultContainer" class="box">
+            <div id="lairResult"></div>
+        </div>
     </div>
 
     <br>
     <a href="index.html" class="button">Return to Main Page</a>
 
-    <script src="lairGene.js"></script>
+    <script src="lairGene.js" defer></script>
+    <script src="lairDescriptGene.js" defer></script>
 </body>
-
 
 </html>
