@@ -85,8 +85,12 @@ mainPage {
 
 #leftImage img,
 #rightImage img {
-    max-width: auto;
-    height: 350px;
+    max-width: 250px;
+    height: 250px;
+    object-fit: contain;
+    /* keeps aspect ratio */
+    display: block;
+    margin: 0 auto;
 }
 
 #god_result {
@@ -100,7 +104,7 @@ mainPage {
 }
 
 #god_Image img {
-    max-width: auto;
+    max-width: 350px;
     height: 350px;
 }
 
@@ -165,4 +169,73 @@ label {
 button {
     margin-top: 15px;
     padding: 8px;
+}
+
+/* Make all clickable cult parts look interactive */
+#cultName,
+#cultGoal,
+#cultSymbol,
+#cultRitual,
+#cultAttire,
+#cultArtifact {
+    cursor: pointer;
+    /* shows a hand cursor */
+    color: #ffffff;
+    /* deep crimson color */
+    transition: color 0.3s ease;
+    /* smooth hover effect */
+}
+
+/* Hover effect */
+#cultName:hover,
+#cultGoal:hover,
+#cultSymbol:hover,
+#cultRitual:hover,
+#cultAttire:hover,
+#cultArtifact:hover {
+    color: #000000;
+    /* brighter orange-red on hover */
+    text-decoration: underline;
+    /* underline to show it's clickable */
+}
+
+#lairName,
+#lairLocation,
+#lairTrait1,
+#lairTrait2 {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#lairName:hover,
+#lairLocation:hover,
+#lairTrait1:hover,
+#lairTrait2:hover {
+    color: #000000;
+    text-decoration: underline;
+}
+
+#godName,
+#godTitle,
+#godDomain,
+#godTrait,
+#godPower,
+#godCommand,
+#godImg {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#godName:hover,
+#godTitle:hover,
+#godDomain:hover,
+#godTrait:hover,
+#godPower:hover,
+#godCommand:hover {
+    color: #000000;
+    text-decoration: underline;
+}
+
+#godImg:hover {
+    filter: brightness(1.2);
 }

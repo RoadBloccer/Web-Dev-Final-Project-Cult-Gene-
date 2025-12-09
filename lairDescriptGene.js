@@ -24,9 +24,14 @@ const lairTraits = [
     "echoing with distant screams"
 ];
 
+// Helper to get random item
+function getRandom(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
 function generateLairDescript() {
-    const name = lairNames[Math.floor(Math.random() * lairNames.length)];
-    const location = lairLocations[Math.floor(Math.random() * lairLocations.length)];
+    const name = getRandom(lairNames);
+    const location = getRandom(lairLocations);
 
     // pick two distinct traits
     const t1Index = Math.floor(Math.random() * lairTraits.length);
@@ -37,11 +42,32 @@ function generateLairDescript() {
     const trait1 = lairTraits[t1Index];
     const trait2 = lairTraits[t2Index];
 
-    return `<strong>${name}</strong><br>Location: ${location}<br>Traits: ${trait1}, ${trait2}`;
+    return `
+        <strong id="lairName">${name}</strong><br>
+        Location: <span id="lairLocation">${location}</span><br>
+        Traits: <span id="lairTrait1">${trait1}</span>, 
+                <span id="lairTrait2">${trait2}</span>
+    `;
 }
 
-// Helper to render into the page
+// Render into the page and attach click handlers
 function showLairDescription() {
     const el = document.getElementById("lairResult");
-    if (el) el.innerHTML = generateLairDescript();
+    if (!el) return;
+
+    el.innerHTML = generateLairDescript();
+
+    // Add click handlers
+    document.getElementById("lairName").onclick = () => {
+        document.getElementById("lairName").textContent = getRandom(lairNames);
+    };
+    document.getElementById("lairLocation").onclick = () => {
+        document.getElementById("lairLocation").textContent = getRandom(lairLocations);
+    };
+    document.getElementById("lairTrait1").onclick = () => {
+        document.getElementById("lairTrait1").textContent = getRandom(lairTraits);
+    };
+    document.getElementById("lairTrait2").onclick = () => {
+        document.getElementById("lairTrait2").textContent = getRandom(lairTraits);
+    };
 }

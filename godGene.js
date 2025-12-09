@@ -347,18 +347,52 @@ const godPowers = [
     "Flesh Puppeteering",
 ];
 
+function getRandom(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
 
 function generateGod() {
-    const gname = godNames[Math.floor(Math.random() * godNames.length)];
-    const title = godTitles[Math.floor(Math.random() * godTitles.length)];
-    const domain = godDomains[Math.floor(Math.random() * godDomains.length)];
-    const traits = godTraits[Math.floor(Math.random() * godTraits.length)];
-    const commands = godCommands[Math.floor(Math.random() * godCommands.length)];
-    const powers = godPowers[Math.floor(Math.random() * godPowers.length)];
-    let godImg = godImages[Math.floor(Math.random() * godImages.length)];
+    const gname = getRandom(godNames);
+    const title = getRandom(godTitles);
+    const domain = getRandom(godDomains);
+    const trait = getRandom(godTraits);
+    const command = getRandom(godCommands);
+    const power = getRandom(godPowers);
+    const godImg = getRandom(godImages);
 
-    document.getElementById("god_result").innerHTML =
-        `<strong>${gname} ${title}</strong><br>Domain: ${domain}<br>Trait: ${traits}<br>Power: ${powers}<br>Commandment: ${commands}`;
+    // Build clickable elements
+    document.getElementById("god_result").innerHTML = `
+        <strong id="godName">${gname}</strong> 
+        <span id="godTitle">${title}</span><br>
+        Domain: <span id="godDomain">${domain}</span><br>
+        Trait: <span id="godTrait">${trait}</span><br>
+        Power: <span id="godPower">${power}</span><br>
+        Commandment: <span id="godCommand">${command}</span>
+    `;
+
     document.getElementById("god_Image").innerHTML =
-        `<img src="${godImg}" alt="Picture of a God">`;
+        `<img id="godImg" src="${godImg}" alt="Picture of a God">`;
+
+    // Click handlers for rerolling each part
+    document.getElementById("godName").onclick = () => {
+        document.getElementById("godName").textContent = getRandom(godNames);
+    };
+    document.getElementById("godTitle").onclick = () => {
+        document.getElementById("godTitle").textContent = getRandom(godTitles);
+    };
+    document.getElementById("godDomain").onclick = () => {
+        document.getElementById("godDomain").textContent = getRandom(godDomains);
+    };
+    document.getElementById("godTrait").onclick = () => {
+        document.getElementById("godTrait").textContent = getRandom(godTraits);
+    };
+    document.getElementById("godPower").onclick = () => {
+        document.getElementById("godPower").textContent = getRandom(godPowers);
+    };
+    document.getElementById("godCommand").onclick = () => {
+        document.getElementById("godCommand").textContent = getRandom(godCommands);
+    };
+    document.getElementById("godImg").onclick = () => {
+        document.getElementById("godImg").src = getRandom(godImages);
+    };
 }
